@@ -13381,6 +13381,9 @@ Game.Launch=function()
 		setTimeout(function(){if (typeof showAds==='undefined' && (!l('detectAds') || l('detectAds').clientHeight<1)) Game.addClass('noAds');},500);
 		l('javascriptError').innerHTML='';
 		l('javascriptError').style.display='none';
+
+		Game.LoadMod('CCSE-fork/CCSE.js');
+
 		Game.Loop();
 		Game.Draw();
 	}
