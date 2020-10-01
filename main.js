@@ -10,6 +10,10 @@ http://orteil.dashnet.org
 var VERSION=2.029;
 var BETA=0;
 
+// List of mods to be sequentially loaded.
+let modList = [
+	'CCSE-fork/test.js',
+];
 
 /*=====================================================================================
 MISC HELPER FUNCTIONS
@@ -1418,13 +1422,14 @@ Game.Launch=function()
 		Game.customCookieClicks=[];//add to the cookie click calls
 		Game.customCreate=[];//create your new upgrades and achievements in there
 
-		Game.LoadMod=function(url)//this loads the mod at the given URL and gives the script an automatic id (URL "http://example.com/my_mod.js" gives the id "modscript_my_mod")
+		Game.LoadMod=function(url, callback)//this loads the mod at the given URL and gives the script an automatic id (URL "http://example.com/my_mod.js" gives the id "modscript_my_mod")
 		{
 			var js=document.createElement('script');
 			var id=url.split('/');id=id[id.length-1].split('.')[0];
 			js.setAttribute('type','text/javascript');
 			js.setAttribute('id','modscript_'+id);
 			js.setAttribute('src',url);
+			if(callback) js.onload = callback;
 			document.head.appendChild(js);
 			console.log('Loaded the mod '+url+', '+id+'.');
 		}
@@ -13382,7 +13387,14 @@ Game.Launch=function()
 		l('javascriptError').innerHTML='';
 		l('javascriptError').style.display='none';
 
-		Game.LoadMod('CCSE-fork/CCSE.js');
+		// Shenanigans to load all mods
+		modList.reverse();
+		let modloader = function() {
+			if(modList && modList.length > 0) {
+				Game.LoadMod(modList.pop(), modloader);
+			}
+		}
+		Game.LoadMod('CCSE-fork/CCSE.js', modloader);
 
 		Game.Loop();
 		Game.Draw();
