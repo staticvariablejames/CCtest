@@ -12,6 +12,7 @@ var BETA=0;
 
 // List of mods to be sequentially loaded.
 let modList = [
+	'self-test.js',
 	'CCSE-fork/test.js',
 ];
 
