@@ -1,3 +1,6 @@
+// Clear localStorage before each test session
+window.localStorage.clear();
+
 var Util = {};
 Util.currentDate = Date.now();
 Util.mockedDate = 1598313600000; // 2020-08-25 00:00:00 UTC
