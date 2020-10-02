@@ -24,3 +24,20 @@ Modifications
 - Automatically load `CCSE-fork/CCSE.js` and all mods listed in `modList`,
 	in the very beginning of `main.js`.
 	Mods are loaded in sequence.
+
+
+Using the Framework
+===================
+
+Instructions for Unix-like operating systems:
+
+1. Create a symbolic link pointing to the directory containing the mod being tested.
+
+2. Create a `test.js` file (or something like that) containing a `runTest()` function
+    that does the testing.
+    See [`self-test.js`](self-test.js) for an example.
+
+3. Edit `modList` in the beginning of `main.js` to load the mod and the test.
+    (Here the symbolic link is useful to allow testing local code.)
+
+4. Run a live server (like npm's `live-server`) and happy debugging!
