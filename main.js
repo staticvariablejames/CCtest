@@ -13396,6 +13396,7 @@ Game.Launch=function()
 		}
 		Game.LoadMod('CCSE-fork/CCSE.js', modloader);
 
+		Game.OpenSesame();
 		Game.Loop();
 		Game.Draw();
 	}
