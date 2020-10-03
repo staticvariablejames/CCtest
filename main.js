@@ -1,4 +1,11 @@
 /*
+The vast majority of the code below is copyright Orteil, 2013-2020.
+The changes are by Static Variable James.
+README.md contains an overview of the changes,
+and the detailed log can be found in the Git history.
+
+Original copyright notice:
+
 All this code is copyright Orteil, 2013-2020.
 	-with some help, advice and fixes by Nicholas Laux, Debugbro, Opti, and lots of people on reddit, Discord, and the DashNet forums
 	-also includes a bunch of snippets found on stackoverflow.com and others
