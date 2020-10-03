@@ -12,5 +12,11 @@ function selfTest() {
     Game.LoadSave(savegame);
     console.assert(Game.lumps >= 1); // Lumps now!
 
+    // Test Util.wipeSave()
+    Util.wipeSave();
+    console.assert(Game.lumps === -1);
+    Game.LoadSave(savegame);
+    console.assert(Game.lumps === -1); // still none because time got reset
+
     console.log("Tests finished!");
 }
