@@ -548,7 +548,8 @@ var PlaySound=function(url,vol,pitchVar)
 			sound.webkitPreservesPitch=false;
 			sound.playbackRate=rate;
 		}
-		sound.play();
+		let promise = sound.play();
+		if(promise) promise.catch(function(error){/* no-op */});
 	}
 }
 

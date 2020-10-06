@@ -25,6 +25,9 @@ Modifications
 	in the very beginning of `main.js`.
 	Mods are loaded in sequence.
 
+- Catch DOMException raised when sounds don't play properly.
+	This should make seeing the errors from `console.assert` easier.
+
 
 Using the Framework
 ===================
