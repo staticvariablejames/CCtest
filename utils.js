@@ -12,6 +12,6 @@ Date.now = () => Util.dateNow() - Util.currentDate + Util.mockedDate;
 
 // Wipe save file and restore original behavior of utilities
 Util.wipeSave = function() {
-    Util.mockedDate = Util.defaultMockedDate;
-    Game.HardReset(2);
+	Util.mockedDate = Util.defaultMockedDate;
+	Game.HardReset(2);
 }
