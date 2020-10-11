@@ -18,5 +18,18 @@ function selfTest() {
 	Game.LoadSave(savegame);
 	console.assert(Game.lumps === -1); // still none because time got reset
 
+	// Test fast ascension and fast reincarnation
+	console.assert(!Game.OnAscend);
+	console.assert(document.getElementById('heavenlyUpgrade363') === null);
+	Util.Ascend();
+	console.assert(!Game.cssClasses.includes('ascendIntro'));
+	console.assert(Game.OnAscend);
+	console.assert(document.getElementById('heavenlyUpgrade363') !== null);
+
+	Util.Reincarnate();
+	console.assert(document.getElementById('heavenlyUpgrade363') === null);
+	console.assert(!Game.OnAscend);
+	console.assert(!Game.cssClasses.includes('reincarnating'));
+
 	console.log("Tests finished!");
 }
