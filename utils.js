@@ -45,3 +45,49 @@ Util.Reincarnate = function() {
 	Game.ReincarnateTimer = Game.ReincarnateDuration;
 	Game.UpdateReincarnateIntro();
 }
+
+// Ensures the grandmapocalypse starts
+Util.startGrandmapocalypse = function() {
+	// Ensures we stay in the grandmapocalypse once it starts
+	if(Game.Objects['Grandma'].amount < 1) Game.Objects['Grandma'].getFree(1);
+
+	/* Even though Game.Upgrades['One mind'].buy has a 'bypass' argument,
+	 * it definitely does not work as intended.
+	 * So we will abuse of Game.Upgrade.prototype.toggle instead.
+	 */
+	Game.Upgrades['One mind'].bought = 0;
+	// This forces the toggle() function below to do the right thing
+	Game.Upgrades['One mind'].toggle();
+}
+
+/* Spawns and immediately pops a wrinkler.
+ * This is mostly useful for testing.
+ * Nothing happens if all wrinkler spots are occupied.
+ */
+Util.spawnAndPopWrinkler = function() {
+	let wrinkler = Game.SpawnWrinkler();
+	if(!wrinkler) return;
+	wrinkler.close = 0; // Guarantees the wrinkler will count as a popped wrinkler
+	wrinkler.hp = 0;
+	Game.UpdateWrinklers();
+}
+
+/* Spaws a "spawnlead reindeer", which counts for Game.reindeerClicked when clicked.
+ * The spawned reindeer is returned.
+ */
+Util.spawnReindeer = function() {
+	let reindeer = new Game.shimmer('reindeer');
+	reindeer.spawnLead = 1;
+	return reindeer;
+}
+
+/* Simulates a click on the big cookie, forcing the game to process it.
+ * The game has some shenanigans to e.g. award Uncanny Clicker and prevent more than 250 clicks/s,
+ * so it might take several frames for a document.getElementById('bigCookie').click() to process.
+ * This function forces the game to process it immediately.
+ */
+Util.clickBigCookie = function() {
+	Game.lastClick = Date.now() - 4;
+	if(Game.T < 3) Game.T = 3;
+	Game.ClickCookie();
+}
