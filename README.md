@@ -21,7 +21,7 @@ Modifications
     which is a few days after Cookie Clicker v2.029 went live.
     This helps testing time-sensitive features, like sugar lumps.
 
-- Automatically load `CCSE-fork/CCSE.js` and all mods listed in `modList`,
+- Automatically load all mods listed in `modList`,
 	in the very beginning of `main.js`.
 	Mods are loaded in sequence.
 

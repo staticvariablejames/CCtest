@@ -20,6 +20,7 @@ var BETA=0;
 
 // List of mods to be sequentially loaded.
 let modList = [
+	'CCSE-fork/CCSE.js',
 	'self-test.js',
 	'CCSE-fork/test.js',
 ];
@@ -13817,7 +13818,7 @@ Game.Launch=function()
 				Game.LoadMod(modList.pop(), modloader);
 			}
 		}
-		Game.LoadMod('CCSE-fork/CCSE.js', modloader);
+		modloader();
 
 		Game.OpenSesame();
 		Game.Loop();
