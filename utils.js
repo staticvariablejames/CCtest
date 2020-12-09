@@ -1,6 +1,11 @@
 // Clear localStorage before each test session
 window.localStorage.clear();
 
+// General utility for testing.
+let approx = function(x, y) {
+	return Math.abs(x-y) < 1e-10;
+}
+
 var Util = {};
 Util.defaultMockedDate = 1598313600000; // 2020-08-25 00:00:00 UTC
 Util.currentDate = Date.now();
