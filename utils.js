@@ -15,6 +15,25 @@ Util.dateNow = Date.now;
 // Allows the clock to tick starting from Util.mockedDate.
 Date.now = () => Util.dateNow() - Util.currentDate + Util.mockedDate;
 
+// Returns a promise that resumes execution once the predicate is fulfilled.
+Util.waitPredicate = function(predicate, testingInterval = 100) {
+	return new Promise(resolve => {
+		let tester = function() {
+			if(predicate()) {
+				resolve();
+			} else {
+				Util.currentTimeoutId = setTimeout(tester, testingInterval);
+			}
+		}
+		tester();
+	});
+}
+
+// Returns a promise that resumes the execution once the building's minigame loads.
+Util.waitMinigame = function(buildingName, testingInterval = 100) {
+	return Util.waitPredicate(() => Game.Objects[buildingName].minigame, testingInterval);
+}
+
 /* Wipe save file and restore original behavior of utilities
  * If type === "with minigames",
  * the fresh save will have all minigames unlocked,
