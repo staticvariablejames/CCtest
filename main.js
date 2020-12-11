@@ -3240,7 +3240,7 @@ Game.Launch=function()
 			tagsStr+
 			'<div class="line"></div><div class="description">'+(mysterious?'???':desc)+'</div></div>'+
 			(tip!=''?('<div class="line"></div><div style="font-size:10px;font-weight:bold;color:#999;text-align:center;padding-bottom:4px;line-height:100%;">'+tip+'</div>'):'')+
-			(Game.sesame?('<div style="font-size:9px;">Id : '+me.id+' | Order : '+Math.floor(me.order)+(me.tier?' | Tier : '+me.tier:'')+'</div>'):'');
+			(Game.sesame?('<div style="font-size:9px;">Id : '+me.id+' | Order : '+me.order+(me.tier?' | Tier : '+me.tier:'')+'</div>'):'');
 		}
 		
 		Game.costDetails=function(cost)
