@@ -28,6 +28,9 @@ Modifications
 - Catch DOMException raised when sounds don't play properly.
 	This should make seeing the errors from `console.assert` easier.
 
+- The `order` attribute of upgrades and achievements is displayed in full.
+    (Vanilla Cookie Clicker `Math.floor`s the `order` attribute before displaying.)
+
 
 Using the Framework
 ===================
