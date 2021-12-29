@@ -1,3 +1,10 @@
+THIS PROJECT IS DEPRECATED
+==========================
+
+Check Cookie Connoisseur (<https://github.com/staticvariablejames/cookie-connoisseur>)
+for a better alternative.
+
+
 Cookie Clicker Testing Framework
 ================================
 
